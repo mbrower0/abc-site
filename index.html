@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Berkeley — IT Consultancy &amp; Systems Integrator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        midnight: {
+                            DEFAULT: '#0b1a2e',
+                            800: '#132236',
+                            700: '#1a2f45',
+                            600: '#243b53',
+                            500: '#334e68',
+                        },
+                        surface: '#0e1f35',
+                        cream: { DEFAULT: '#f6f3ed', dark: '#e8e4db' },
+                        accent: { DEFAULT: '#2a9d8f', dark: '#1f7a6f', light: '#3dbdad' },
+                        gold: { DEFAULT: '#c9a84c', light: '#dfc06a' },
+                    },
+                    fontFamily: {
+                        display: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* ---- Base ---- */
+        body { font-feature-settings: 'ss01', 'ss02'; }
+
+        .display-heading { letter-spacing: -0.03em; line-height: 1.08; }
+        .body-text { line-height: 1.7; }
+
+        /* ---- Grain overlay (global) ---- */
+        #grain-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            pointer-events: none; mix-blend-mode: overlay; opacity: 0.04;
+        }
+
+        /* ---- Scroll reveal ---- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            transition:
+                opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal-d1 { transition-delay: 0.1s !important; }
+        .reveal-d2 { transition-delay: 0.2s !important; }
+        .reveal-d3 { transition-delay: 0.3s !important; }
+
+        /* ---- Nav ---- */
+        .nav-scrolled {
+            background: rgba(11, 26, 46, 0.92) !important;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        /* ---- Scrollbar ---- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b1a2e; }
+        ::-webkit-scrollbar-thumb { background: #334e68; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #486581; }
+
+        /* ---- Card top accent ---- */
+        .card-accent { position: relative; overflow: hidden; }
+        .card-accent::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(42,157,143,0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .card-accent:hover::after { opacity: 1; }
+
+        /* ---- Card hover glow ---- */
+        .card-glow::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(42,157,143,0.06), transparent 40%);
+            border-radius: inherit;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .card-glow:hover::before { opacity: 1; }
+
+        /* ---- Focus visible ---- */
+        :focus-visible {
+            outline: 2px solid #2a9d8f;
+            outline-offset: 3px;
+        }
+
+        /* ---- Hero radials ---- */
+        .hero-bg {
+            background:
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(42,157,143,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 70%),
+                linear-gradient(170deg, #0b1a2e 0%, #0e1f35 40%, #132236 100%);
+        }
+    </style>
+</head>
+<body class="bg-midnight font-body text-cream antialiased">
+
+    <!-- Grain texture (SVG filter rendered once, fixed overlay) -->
+    <svg id="grain-overlay" xmlns="http://www.w3.org/2000/svg">
+        <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain)"/>
+    </svg>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-[background,border] duration-300" style="background: transparent; border-bottom: 1px solid transparent;">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <a href="#" class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity duration-200">
+                <span class="flex items-center justify-center w-8 h-8 rounded-[3px] bg-accent/15 border border-accent/25 text-accent font-display text-[0.95rem] leading-none">AB</span>
+                <span class="font-display text-[1.4rem] text-white tracking-wide">Austin Berkeley</span>
+            </a>
+            <!-- Desktop links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="text-[0.82rem] text-cream/60 hover:text-white transition-colors duration-200">Services</a>
+                <a href="#about" class="text-[0.82rem] text-cream/60 hover:text-white transition-colors duration-200">About</a>
+                <a href="#community" class="text-[0.82rem] text-cream/60 hover:text-white transition-colors duration-200">Community</a>
+                <a href="#contact" class="inline-flex items-center px-5 py-2.5 bg-accent text-white text-[0.82rem] font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                    Contact Us
+                </a>
+            </div>
+            <!-- Mobile toggle -->
+            <button id="menu-btn" class="md:hidden p-2 text-white hover:text-accent transition-colors duration-200" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden" style="background: rgba(11,26,46,0.97);">
+            <div class="px-6 py-6 flex flex-col gap-4 border-t border-white/5">
+                <a href="#services" class="text-cream/60 hover:text-white py-2 transition-colors duration-200">Services</a>
+                <a href="#about" class="text-cream/60 hover:text-white py-2 transition-colors duration-200">About</a>
+                <a href="#community" class="text-cream/60 hover:text-white py-2 transition-colors duration-200">Community</a>
+                <a href="#contact" class="inline-flex items-center justify-center px-5 py-3 bg-accent text-white text-sm font-medium rounded-[3px] hover:bg-accent-dark transition-[background] duration-200 mt-2">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="relative min-h-[92vh] flex items-center hero-bg overflow-hidden">
+        <div class="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-24">
+            <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+                <div class="lg:col-span-3">
+                    <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-7 reveal">
+                        IT Consultancy &amp; Systems Integrator
+                    </p>
+                    <h1 class="font-display text-[clamp(2.8rem,7vw,5rem)] text-white display-heading mb-8 reveal reveal-d1">
+                        Brilliant solutions.<br>
+                        <span class="text-accent/90 italic">Pragmatic delivery.</span>
+                    </h1>
+                    <p class="text-[1.1rem] sm:text-[1.2rem] text-cream/55 body-text max-w-xl mb-10 reveal reveal-d2">
+                        We listen to your needs, understand your context, and deliver the right IT solution — on time and on budget.
+                    </p>
+                    <div class="flex flex-wrap gap-4 reveal reveal-d3">
+                        <a href="#services" class="inline-flex items-center px-7 py-3.5 bg-accent text-white font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                            What We Do
+                            <svg class="w-4 h-4 ml-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#about" class="inline-flex items-center px-7 py-3.5 border border-cream/15 text-cream/70 font-medium rounded-[3px] hover:border-cream/30 hover:text-white active:scale-[0.97] transition-[border-color,color,transform] duration-200">
+                            Our Approach
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero image -->
+                <div class="hidden lg:block lg:col-span-2 reveal reveal-d2">
+                    <div class="relative rounded-[6px] overflow-hidden" style="box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 8px 20px rgba(42,157,143,0.08);">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+                             alt="Global technology network visualization"
+                             class="w-full aspect-[4/3] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/60 via-transparent to-midnight/20"></div>
+                        <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/20">
+            <span class="text-[0.65rem] tracking-[0.25em] uppercase">Scroll</span>
+            <div class="w-px h-8 bg-gradient-to-b from-cream/20 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section id="services" class="relative py-24 sm:py-32 bg-surface overflow-hidden">
+        <!-- Top divider -->
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent"></div>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">What We Do</p>
+                <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-white display-heading max-w-lg">
+                    Full-spectrum IT capability.
+                </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-5">
+                <!-- Consulting -->
+                <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
+                    <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80"
+                             alt="Strategy meeting" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/40 to-transparent"></div>
+                        <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="font-display text-[1.45rem] text-white mb-3">Consulting</h3>
+                        <p class="text-cream/55 body-text text-[0.92rem]">Strategy, architecture, planning, and execution management. We help you make the right technology decisions.</p>
+                    </div>
+                </div>
+
+                <!-- Staffing -->
+                <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal reveal-d1" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
+                    <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
+                             alt="Team collaboration" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/40 to-transparent"></div>
+                        <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="font-display text-[1.45rem] text-white mb-3">Staffing</h3>
+                        <p class="text-cream/55 body-text text-[0.92rem]">Through our Integrated Consulting Network, we assemble the ideal team from world-class specialists across every IT discipline.</p>
+                    </div>
+                </div>
+
+                <!-- Solutions -->
+                <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal reveal-d2" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
+                    <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+                             alt="Software development" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/40 to-transparent"></div>
+                        <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="font-display text-[1.45rem] text-white mb-3">Solutions</h3>
+                        <p class="text-cream/55 body-text text-[0.92rem]">Our Solution Factory accelerates delivery by building on proven platforms — reducing your time and cost to market.</p>
+                    </div>
+                </div>
+
+                <!-- Outsourcing -->
+                <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal reveal-d3" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
+                    <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80"
+                             alt="Modern workspace" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight via-midnight/40 to-transparent"></div>
+                        <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="font-display text-[1.45rem] text-white mb-3">Outsourcing</h3>
+                        <p class="text-cream/55 body-text text-[0.92rem]">From full project takeover to targeted specialists, flexible models that scale to your exact needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="relative py-24 sm:py-32 bg-cream overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+                <div class="reveal">
+                    <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">Why Austin Berkeley</p>
+                    <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-midnight display-heading mb-8">
+                        Small-firm passion.<br>
+                        <span class="text-accent italic">Big-firm capability.</span>
+                    </h2>
+                    <div class="space-y-5 text-midnight/60 body-text text-[0.95rem]">
+                        <p>Founded in 2010, Austin Berkeley brings decades of enterprise IT leadership to every engagement. We don't just advise — we adopt your goals, your concerns, and your constraints.</p>
+                        <p>As a founding member of the Integrated Consulting Network, we unite the expertise of specialized consultancies worldwide for unmatched delivery capability.</p>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-d1">
+                    <div class="relative">
+                        <div class="relative rounded-[4px] overflow-hidden"
+                             style="box-shadow: 0 12px 40px rgba(11,26,46,0.12), 0 4px 12px rgba(11,26,46,0.06);">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=700&q=80"
+                                 alt="Team strategy session" class="w-full aspect-[4/3] object-cover" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/50 to-midnight/20"></div>
+                            <div class="absolute inset-0 bg-accent/[0.06] mix-blend-multiply"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+                                <blockquote class="font-display text-[clamp(1.4rem,2.5vw,1.8rem)] text-white/90 italic leading-snug">
+                                    "Simplicity is the ultimate sophistication."
+                                </blockquote>
+                                <p class="mt-5 text-[0.72rem] text-white/40 tracking-[0.15em] uppercase">— Leonardo da Vinci</p>
+                            </div>
+                        </div>
+                        <!-- Corner accents -->
+                        <div class="absolute -top-3 -left-3 w-14 h-14 border-t-2 border-l-2 border-accent/25 rounded-tl-[2px]"></div>
+                        <div class="absolute -bottom-3 -right-3 w-14 h-14 border-b-2 border-r-2 border-accent/25 rounded-br-[2px]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA BANNER ===================== -->
+    <section class="relative py-24 sm:py-32 overflow-hidden">
+        <div class="absolute inset-0" style="background: linear-gradient(135deg, #1f7a6f 0%, #2a9d8f 35%, #1a3a5c 100%);"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-midnight/30 to-transparent"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-display text-[clamp(2rem,5.5vw,3.5rem)] text-white display-heading mb-10 reveal">
+                Let's turn your biggest challenges into your next <span class="italic">breakthrough.</span>
+            </h2>
+            <div class="flex flex-wrap justify-center gap-4 reveal reveal-d1">
+                <a href="#contact" class="inline-flex items-center px-8 py-4 bg-white text-midnight font-medium rounded-[3px] hover:bg-cream active:scale-[0.97] transition-[background,transform] duration-200"
+                   style="box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.08);">
+                    Get in Touch
+                </a>
+                <a href="#services" class="inline-flex items-center px-8 py-4 border border-white/25 text-white font-medium rounded-[3px] hover:border-white/50 hover:bg-white/[0.06] active:scale-[0.97] transition-[border-color,background,transform] duration-200">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== COMMUNITY ===================== -->
+    <section id="community" class="relative py-24 sm:py-32 bg-surface overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+                <div class="reveal">
+                    <p class="text-gold text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">Social Responsibility</p>
+                    <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-white display-heading">
+                        Business driven.<br>
+                        People focused.<br>
+                        <span class="text-gold/80 italic">Socially conscious.</span>
+                    </h2>
+                </div>
+
+                <div class="reveal reveal-d1">
+                    <p class="text-cream/55 body-text text-[1.05rem] mb-8">
+                        We invest 10% of net revenues in charitable endeavors — from global development organizations to local Chester County causes.
+                    </p>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Evidence Action</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Water.org</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">One Acre Fund</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">GiveDirectly</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Save the Children</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Kiva</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">& more</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="relative py-24 sm:py-32 bg-midnight overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cream/[0.06] to-transparent"></div>
+
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-20">
+                <div class="reveal">
+                    <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">Get in Touch</p>
+                    <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-white display-heading mb-8">
+                        Ready to talk?
+                    </h2>
+                    <div class="space-y-4 text-cream/55 body-text">
+                        <p>
+                            <a href="mailto:info@austinberkeley.com" class="text-accent hover:text-accent-light transition-colors duration-200">info@austinberkeley.com</a>
+                        </p>
+                        <p>Chester County, Pennsylvania</p>
+                    </div>
+                    <div class="mt-10 pt-8 border-t border-white/[0.04]">
+                        <p class="text-[0.82rem] text-cream/25">Looking for work? Send your resume to
+                            <a href="mailto:jobs@austinberkeley.com" class="text-accent/50 hover:text-accent transition-colors duration-200">jobs@austinberkeley.com</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="reveal reveal-d1">
+                    <form id="contact-form" class="space-y-5">
+                        <div>
+                            <input type="text" id="cf-name" placeholder="Name" required
+                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[0.92rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
+                        </div>
+                        <div>
+                            <input type="email" id="cf-email" placeholder="Email" required
+                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[0.92rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
+                        </div>
+                        <div>
+                            <textarea rows="4" id="cf-message" placeholder="How can we help?" required
+                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[0.92rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200 resize-none"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="inline-flex items-center px-7 py-3.5 bg-accent text-white font-medium text-[0.92rem] rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                            Send Message
+                            <svg class="w-4 h-4 ml-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-midnight border-t border-white/[0.04] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p class="text-cream/25 text-[0.78rem]">&copy; 2026 Austin Berkeley Corporation. All Rights Reserved.</p>
+            <p class="text-cream/15 text-[0.72rem]">Chester County, PA</p>
+        </div>
+    </footer>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <script>
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Nav background on scroll
+        const nav = document.getElementById('nav');
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    nav.classList.toggle('nav-scrolled', window.scrollY > 50);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Contact form → mailto
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('cf-name').value.trim();
+            const email = document.getElementById('cf-email').value.trim();
+            const message = document.getElementById('cf-message').value.trim();
+            const subject = encodeURIComponent('Website Inquiry from ' + name);
+            const body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + message);
+            window.location.href = 'mailto:info@austinberkeley.com?subject=' + subject + '&body=' + body;
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link =>
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'))
+        );
+    </script>
+</body>
+</html>
