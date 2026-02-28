@@ -286,7 +286,7 @@
                     </h2>
                     <div class="space-y-5 text-midnight/60 body-text text-[1.1rem]">
                         <p>Founded in 2010, Austin Berkeley brings decades of enterprise IT leadership to every engagement. We don't just advise — we adopt your goals, your concerns, and your constraints.</p>
-                        <p>As a founding member of the Integrated Consulting Network, we unite the expertise of specialized consultancies worldwide for unmatched delivery capability.</p>
+                        <p>Lean by design: senior teams, crisp decisions, and just-enough process. We move fast, build carefully, and leave you with clean, maintainable outcomes - not a dependency.</p>
                     </div>
                 </div>
 
@@ -391,25 +391,11 @@
                 </div>
 
                 <div class="reveal reveal-d1">
-                    <form id="contact-form" class="space-y-5">
-                        <div>
-                            <input type="text" id="cf-name" placeholder="Name" required
-                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[1.02rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
-                        </div>
-                        <div>
-                            <input type="email" id="cf-email" placeholder="Email" required
-                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[1.02rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
-                        </div>
-                        <div>
-                            <textarea rows="4" id="cf-message" placeholder="How can we help?" required
-                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[1.02rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200 resize-none"></textarea>
-                        </div>
-                        <button type="submit"
-                            class="inline-flex items-center px-7 py-3.5 bg-accent text-white font-medium text-[1.02rem] rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
-                            Send Message
-                            <svg class="w-4 h-4 ml-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </button>
-                    </form>
+                    <a href="mailto:info@austinberkeley.com"
+                       class="inline-flex items-center px-10 py-5 bg-accent text-white font-medium text-[1.1rem] rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                        Send Us an Email
+                        <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -448,17 +434,6 @@
                 });
                 ticking = true;
             }
-        });
-
-        // Contact form → mailto
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('cf-name').value.trim();
-            const email = document.getElementById('cf-email').value.trim();
-            const message = document.getElementById('cf-message').value.trim();
-            const subject = encodeURIComponent('Website Inquiry from ' + name);
-            const body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + message);
-            window.location.href = 'mailto:info@austinberkeley.com?subject=' + subject + '&body=' + body;
         });
 
         // Mobile menu toggle
