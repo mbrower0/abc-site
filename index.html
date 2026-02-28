@@ -129,14 +129,14 @@
         <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
             <a href="#" class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity duration-200">
                 <span class="flex items-center justify-center w-8 h-8 rounded-[3px] bg-accent/15 border border-accent/25 text-accent font-display text-[0.95rem] leading-none">AB</span>
-                <span class="font-display text-[1.4rem] text-white tracking-wide">Austin Berkeley</span>
+                <span class="font-display text-[1.6rem] text-white tracking-wide">Austin Berkeley</span>
             </a>
             <!-- Desktop links -->
             <div class="hidden md:flex items-center gap-8">
-                <a href="#services" class="text-[0.82rem] text-cream/60 hover:text-white transition-colors duration-200">Services</a>
-                <a href="#about" class="text-[0.82rem] text-cream/60 hover:text-white transition-colors duration-200">About</a>
-                <a href="#community" class="text-[0.82rem] text-cream/60 hover:text-white transition-colors duration-200">Community</a>
-                <a href="#contact" class="inline-flex items-center px-5 py-2.5 bg-accent text-white text-[0.82rem] font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                <a href="#services" class="text-[0.95rem] text-cream/60 hover:text-white transition-colors duration-200">Services</a>
+                <a href="#about" class="text-[0.95rem] text-cream/60 hover:text-white transition-colors duration-200">About</a>
+                <a href="#community" class="text-[0.95rem] text-cream/60 hover:text-white transition-colors duration-200">Community</a>
+                <a href="#contact" class="inline-flex items-center px-5 py-2.5 bg-accent text-white text-[0.95rem] font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
                     Contact Us
                 </a>
             </div>
@@ -161,47 +161,44 @@
     </nav>
 
     <!-- ===================== HERO ===================== -->
-    <section class="relative min-h-[92vh] flex items-center hero-bg overflow-hidden">
-        <div class="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-24">
-            <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-                <div class="lg:col-span-3">
-                    <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-7 reveal">
-                        IT Consultancy &amp; Systems Integrator
-                    </p>
-                    <h1 class="font-display text-[clamp(2.8rem,7vw,5rem)] text-white display-heading mb-8 reveal reveal-d1">
-                        Brilliant solutions.<br>
-                        <span class="text-accent/90 italic">Pragmatic delivery.</span>
-                    </h1>
-                    <p class="text-[1.1rem] sm:text-[1.2rem] text-cream/55 body-text max-w-xl mb-10 reveal reveal-d2">
-                        We listen to your needs, understand your context, and deliver the right IT solution — on time and on budget.
-                    </p>
-                    <div class="flex flex-wrap gap-4 reveal reveal-d3">
-                        <a href="#services" class="inline-flex items-center px-7 py-3.5 bg-accent text-white font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
-                            What We Do
-                            <svg class="w-4 h-4 ml-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                        <a href="#about" class="inline-flex items-center px-7 py-3.5 border border-cream/15 text-cream/70 font-medium rounded-[3px] hover:border-cream/30 hover:text-white active:scale-[0.97] transition-[border-color,color,transform] duration-200">
-                            Our Approach
-                        </a>
-                    </div>
-                </div>
-                <!-- Hero image -->
-                <div class="hidden lg:block lg:col-span-2 reveal reveal-d2">
-                    <div class="relative rounded-[6px] overflow-hidden" style="box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 8px 20px rgba(42,157,143,0.08);">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
-                             alt="Global technology network visualization"
-                             class="w-full aspect-[4/3] object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/60 via-transparent to-midnight/20"></div>
-                        <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
-                    </div>
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Full-bleed background image -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"
+                 alt="" class="w-full h-full object-cover" style="object-position: center 30%;">
+            <div class="absolute inset-0 bg-gradient-to-r from-midnight/[0.97] via-midnight/85 to-midnight/60"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-transparent to-midnight/40"></div>
+            <div class="absolute inset-0 bg-accent/[0.04] mix-blend-multiply"></div>
+        </div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-6 pt-36 pb-28">
+            <div class="max-w-3xl">
+                <p class="text-accent text-[0.88rem] font-medium tracking-[0.2em] uppercase mb-7 reveal">
+                    IT Consultancy &amp; Systems Integrator
+                </p>
+                <h1 class="font-display text-[clamp(3.4rem,8.5vw,6rem)] text-white display-heading mb-8 reveal reveal-d1">
+                    Brilliant solutions.<br>
+                    <span class="text-accent/90 italic">Pragmatic delivery.</span>
+                </h1>
+                <p class="text-[1.25rem] sm:text-[1.4rem] text-cream/60 body-text max-w-xl mb-12 reveal reveal-d2">
+                    We listen to your needs, understand your context, and deliver the right IT solution — on time and on budget.
+                </p>
+                <div class="flex flex-wrap gap-4 reveal reveal-d3">
+                    <a href="#services" class="inline-flex items-center px-8 py-4 bg-accent text-white text-[1.02rem] font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                        What We Do
+                        <svg class="w-4 h-4 ml-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                    <a href="#about" class="inline-flex items-center px-8 py-4 border border-cream/15 text-cream/70 text-[1.02rem] font-medium rounded-[3px] hover:border-cream/30 hover:text-white active:scale-[0.97] transition-[border-color,color,transform] duration-200">
+                        Our Approach
+                    </a>
                 </div>
             </div>
         </div>
 
         <!-- Scroll indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/20">
-            <span class="text-[0.65rem] tracking-[0.25em] uppercase">Scroll</span>
-            <div class="w-px h-8 bg-gradient-to-b from-cream/20 to-transparent"></div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/25">
+            <span class="text-[0.72rem] tracking-[0.25em] uppercase">Scroll</span>
+            <div class="w-px h-8 bg-gradient-to-b from-cream/25 to-transparent"></div>
         </div>
     </section>
 
@@ -211,8 +208,8 @@
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent"></div>
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-16 reveal">
-                <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">What We Do</p>
-                <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-white display-heading max-w-lg">
+                <p class="text-accent text-[0.9rem] font-medium tracking-[0.2em] uppercase mb-4">What We Do</p>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] text-white display-heading max-w-lg">
                     Full-spectrum IT capability.
                 </h2>
             </div>
@@ -227,8 +224,8 @@
                         <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="font-display text-[1.45rem] text-white mb-3">Consulting</h3>
-                        <p class="text-cream/55 body-text text-[0.92rem]">Strategy, architecture, planning, and execution management. We help you make the right technology decisions.</p>
+                        <h3 class="font-display text-[1.8rem] text-white mb-3">Consulting</h3>
+                        <p class="text-cream/55 body-text text-[1.2rem]">Strategy, architecture, planning, and execution management. We help you make the right technology decisions.</p>
                     </div>
                 </div>
 
@@ -241,8 +238,8 @@
                         <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="font-display text-[1.45rem] text-white mb-3">Staffing</h3>
-                        <p class="text-cream/55 body-text text-[0.92rem]">Through our Integrated Consulting Network, we assemble the ideal team from world-class specialists across every IT discipline.</p>
+                        <h3 class="font-display text-[1.8rem] text-white mb-3">Staffing</h3>
+                        <p class="text-cream/55 body-text text-[1.2rem]">Through our Integrated Consulting Network, we assemble the ideal team from world-class specialists across every IT discipline.</p>
                     </div>
                 </div>
 
@@ -255,8 +252,8 @@
                         <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="font-display text-[1.45rem] text-white mb-3">Solutions</h3>
-                        <p class="text-cream/55 body-text text-[0.92rem]">Our Solution Factory accelerates delivery by building on proven platforms — reducing your time and cost to market.</p>
+                        <h3 class="font-display text-[1.8rem] text-white mb-3">Solutions</h3>
+                        <p class="text-cream/55 body-text text-[1.2rem]">Our Solution Factory accelerates delivery by building on proven platforms — reducing your time and cost to market.</p>
                     </div>
                 </div>
 
@@ -269,8 +266,8 @@
                         <div class="absolute inset-0 bg-accent/[0.08] mix-blend-multiply"></div>
                     </div>
                     <div class="relative z-10">
-                        <h3 class="font-display text-[1.45rem] text-white mb-3">Outsourcing</h3>
-                        <p class="text-cream/55 body-text text-[0.92rem]">From full project takeover to targeted specialists, flexible models that scale to your exact needs.</p>
+                        <h3 class="font-display text-[1.8rem] text-white mb-3">Outsourcing</h3>
+                        <p class="text-cream/55 body-text text-[1.2rem]">From full project takeover to targeted specialists, flexible models that scale to your exact needs.</p>
                     </div>
                 </div>
             </div>
@@ -282,12 +279,12 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                 <div class="reveal">
-                    <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">Why Austin Berkeley</p>
-                    <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-midnight display-heading mb-8">
+                    <p class="text-accent text-[0.9rem] font-medium tracking-[0.2em] uppercase mb-4">Why Austin Berkeley</p>
+                    <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] text-midnight display-heading mb-8">
                         Small-firm passion.<br>
                         <span class="text-accent italic">Big-firm capability.</span>
                     </h2>
-                    <div class="space-y-5 text-midnight/60 body-text text-[0.95rem]">
+                    <div class="space-y-5 text-midnight/60 body-text text-[1.1rem]">
                         <p>Founded in 2010, Austin Berkeley brings decades of enterprise IT leadership to every engagement. We don't just advise — we adopt your goals, your concerns, and your constraints.</p>
                         <p>As a founding member of the Integrated Consulting Network, we unite the expertise of specialized consultancies worldwide for unmatched delivery capability.</p>
                     </div>
@@ -302,10 +299,10 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/50 to-midnight/20"></div>
                             <div class="absolute inset-0 bg-accent/[0.06] mix-blend-multiply"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
-                                <blockquote class="font-display text-[clamp(1.4rem,2.5vw,1.8rem)] text-white/90 italic leading-snug">
+                                <blockquote class="font-display text-[clamp(1.7rem,3vw,2.3rem)] text-white/90 italic leading-snug">
                                     "Simplicity is the ultimate sophistication."
                                 </blockquote>
-                                <p class="mt-5 text-[0.72rem] text-white/40 tracking-[0.15em] uppercase">— Leonardo da Vinci</p>
+                                <p class="mt-5 text-[0.82rem] text-white/40 tracking-[0.15em] uppercase">— Leonardo da Vinci</p>
                             </div>
                         </div>
                         <!-- Corner accents -->
@@ -323,7 +320,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-midnight/30 to-transparent"></div>
 
         <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <h2 class="font-display text-[clamp(2rem,5.5vw,3.5rem)] text-white display-heading mb-10 reveal">
+            <h2 class="font-display text-[clamp(2.5rem,6.5vw,4.2rem)] text-white display-heading mb-10 reveal">
                 Let's turn your biggest challenges into your next <span class="italic">breakthrough.</span>
             </h2>
             <div class="flex flex-wrap justify-center gap-4 reveal reveal-d1">
@@ -343,8 +340,8 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
                 <div class="reveal">
-                    <p class="text-gold text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">Social Responsibility</p>
-                    <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-white display-heading">
+                    <p class="text-gold text-[0.9rem] font-medium tracking-[0.2em] uppercase mb-4">Social Responsibility</p>
+                    <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] text-white display-heading">
                         Business driven.<br>
                         People focused.<br>
                         <span class="text-gold/80 italic">Socially conscious.</span>
@@ -352,17 +349,17 @@
                 </div>
 
                 <div class="reveal reveal-d1">
-                    <p class="text-cream/55 body-text text-[1.05rem] mb-8">
+                    <p class="text-cream/55 body-text text-[1.2rem] mb-8">
                         We invest 10% of net revenues in charitable endeavors — from global development organizations to local Chester County causes.
                     </p>
                     <div class="flex flex-wrap gap-2.5">
-                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Evidence Action</span>
-                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Water.org</span>
-                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">One Acre Fund</span>
-                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">GiveDirectly</span>
-                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Save the Children</span>
-                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">Kiva</span>
-                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.8rem] rounded-[3px]">& more</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">Evidence Action</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">Water.org</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">One Acre Fund</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">GiveDirectly</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">Save the Children</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">Kiva</span>
+                        <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">& more</span>
                     </div>
                 </div>
             </div>
@@ -376,18 +373,18 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-20">
                 <div class="reveal">
-                    <p class="text-accent text-[0.78rem] font-medium tracking-[0.2em] uppercase mb-4">Get in Touch</p>
-                    <h2 class="font-display text-[clamp(2rem,5vw,3.2rem)] text-white display-heading mb-8">
+                    <p class="text-accent text-[0.9rem] font-medium tracking-[0.2em] uppercase mb-4">Get in Touch</p>
+                    <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] text-white display-heading mb-8">
                         Ready to talk?
                     </h2>
-                    <div class="space-y-4 text-cream/55 body-text">
+                    <div class="space-y-4 text-cream/55 body-text text-[1.1rem]">
                         <p>
                             <a href="mailto:info@austinberkeley.com" class="text-accent hover:text-accent-light transition-colors duration-200">info@austinberkeley.com</a>
                         </p>
                         <p>Chester County, Pennsylvania</p>
                     </div>
                     <div class="mt-10 pt-8 border-t border-white/[0.04]">
-                        <p class="text-[0.82rem] text-cream/25">Looking for work? Send your resume to
+                        <p class="text-[0.95rem] text-cream/25">Looking for work? Send your resume to
                             <a href="mailto:jobs@austinberkeley.com" class="text-accent/50 hover:text-accent transition-colors duration-200">jobs@austinberkeley.com</a>
                         </p>
                     </div>
@@ -397,18 +394,18 @@
                     <form id="contact-form" class="space-y-5">
                         <div>
                             <input type="text" id="cf-name" placeholder="Name" required
-                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[0.92rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
+                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[1.02rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
                         </div>
                         <div>
                             <input type="email" id="cf-email" placeholder="Email" required
-                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[0.92rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
+                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[1.02rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200">
                         </div>
                         <div>
                             <textarea rows="4" id="cf-message" placeholder="How can we help?" required
-                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[0.92rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200 resize-none"></textarea>
+                                class="w-full bg-white/[0.04] border border-white/[0.07] rounded-[3px] px-5 py-3.5 text-white placeholder-cream/25 text-[1.02rem] focus:border-accent/40 focus:outline-none transition-[border-color] duration-200 resize-none"></textarea>
                         </div>
                         <button type="submit"
-                            class="inline-flex items-center px-7 py-3.5 bg-accent text-white font-medium text-[0.92rem] rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                            class="inline-flex items-center px-7 py-3.5 bg-accent text-white font-medium text-[1.02rem] rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
                             Send Message
                             <svg class="w-4 h-4 ml-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                         </button>
@@ -421,8 +418,8 @@
     <!-- ===================== FOOTER ===================== -->
     <footer class="bg-midnight border-t border-white/[0.04] py-8">
         <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p class="text-cream/25 text-[0.78rem]">&copy; 2026 Austin Berkeley Corporation. All Rights Reserved.</p>
-            <p class="text-cream/15 text-[0.72rem]">Chester County, PA</p>
+            <p class="text-cream/25 text-[0.88rem]">&copy; 2026 Austin Berkeley Corporation. All Rights Reserved.</p>
+            <p class="text-cream/15 text-[0.82rem]">Chester County, PA</p>
         </div>
     </footer>
 
