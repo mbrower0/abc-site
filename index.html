@@ -391,11 +391,15 @@
                 </div>
 
                 <div class="reveal reveal-d1">
-                    <a href="mailto:info@austinberkeley.com"
-                       class="inline-flex items-center px-10 py-5 bg-accent text-white font-medium text-[1.1rem] rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
-                        Send Us an Email
-                        <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    </a>
+
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                      <input type="hidden" name="access_key" value="d4331de8-6633-4987-b6e7-85880a35d21e">
+                      <input type="text" name="name" required>
+                      <input type="email" name="email" required>
+                      <textarea name="message" required></textarea>
+                      <button type="submit">Submit</button>
+                    </form>
+                    
                 </div>
             </div>
         </div>
