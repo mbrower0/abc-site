@@ -34,19 +34,16 @@
         }
     </script>
     <style>
-        /* ---- Base ---- */
         body { font-feature-settings: 'ss01', 'ss02'; }
 
         .display-heading { letter-spacing: -0.03em; line-height: 1.08; }
         .body-text { line-height: 1.7; }
 
-        /* ---- Grain overlay (global) ---- */
         #grain-overlay {
             position: fixed; inset: 0; z-index: 9999;
             pointer-events: none; mix-blend-mode: overlay; opacity: 0.04;
         }
 
-        /* ---- Scroll reveal ---- */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -62,7 +59,6 @@
         .reveal-d2 { transition-delay: 0.2s !important; }
         .reveal-d3 { transition-delay: 0.3s !important; }
 
-        /* ---- Nav ---- */
         .nav-scrolled {
             background: rgba(11, 26, 46, 0.92) !important;
             backdrop-filter: blur(14px);
@@ -70,13 +66,11 @@
             border-bottom: 1px solid rgba(255,255,255,0.04);
         }
 
-        /* ---- Scrollbar ---- */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0b1a2e; }
         ::-webkit-scrollbar-thumb { background: #334e68; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #486581; }
 
-        /* ---- Card top accent ---- */
         .card-accent { position: relative; overflow: hidden; }
         .card-accent::after {
             content: '';
@@ -87,7 +81,6 @@
         }
         .card-accent:hover::after { opacity: 1; }
 
-        /* ---- Card hover glow ---- */
         .card-glow::before {
             content: '';
             position: absolute; inset: 0;
@@ -99,13 +92,11 @@
         }
         .card-glow:hover::before { opacity: 1; }
 
-        /* ---- Focus visible ---- */
         :focus-visible {
             outline: 2px solid #2a9d8f;
             outline-offset: 3px;
         }
 
-        /* ---- Hero radials ---- */
         .hero-bg {
             background:
                 radial-gradient(ellipse 60% 50% at 80% 20%, rgba(42,157,143,0.07) 0%, transparent 70%),
@@ -116,7 +107,6 @@
 </head>
 <body class="bg-midnight font-body text-cream antialiased">
 
-    <!-- Grain texture (SVG filter rendered once, fixed overlay) -->
     <svg id="grain-overlay" xmlns="http://www.w3.org/2000/svg">
         <filter id="grain">
             <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
@@ -124,14 +114,13 @@
         <rect width="100%" height="100%" filter="url(#grain)"/>
     </svg>
 
-    <!-- ===================== NAVIGATION ===================== -->
     <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-[background,border] duration-300" style="background: transparent; border-bottom: 1px solid transparent;">
         <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
             <a href="#" class="group flex items-center gap-2.5 hover:opacity-90 transition-opacity duration-200">
                 <span class="flex items-center justify-center w-8 h-8 rounded-[3px] bg-accent/15 border border-accent/25 text-accent font-display text-[0.95rem] leading-none">AB</span>
                 <span class="font-display text-[1.6rem] text-white tracking-wide">Austin Berkeley</span>
             </a>
-            <!-- Desktop links -->
+
             <div class="hidden md:flex items-center gap-8">
                 <a href="#services" class="text-[0.95rem] text-cream/60 hover:text-white transition-colors duration-200">Services</a>
                 <a href="#about" class="text-[0.95rem] text-cream/60 hover:text-white transition-colors duration-200">About</a>
@@ -140,14 +129,14 @@
                     Contact Us
                 </a>
             </div>
-            <!-- Mobile toggle -->
+
             <button id="menu-btn" class="md:hidden p-2 text-white hover:text-accent transition-colors duration-200" aria-label="Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
         </div>
-        <!-- Mobile menu -->
+
         <div id="mobile-menu" class="md:hidden hidden" style="background: rgba(11,26,46,0.97);">
             <div class="px-6 py-6 flex flex-col gap-4 border-t border-white/5">
                 <a href="#services" class="text-cream/60 hover:text-white py-2 transition-colors duration-200">Services</a>
@@ -160,9 +149,7 @@
         </div>
     </nav>
 
-    <!-- ===================== HERO ===================== -->
     <section class="relative min-h-screen flex items-center overflow-hidden">
-        <!-- Full-bleed background image -->
         <div class="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80"
                  alt="" class="w-full h-full object-cover" style="object-position: center 30%;">
@@ -181,7 +168,7 @@
                     <span class="text-accent/90 italic">Pragmatic delivery.</span>
                 </h1>
                 <p class="text-[1.25rem] sm:text-[1.4rem] text-cream/60 body-text max-w-xl mb-12 reveal reveal-d2">
-                    We listen to your needs, understand your context, and deliver the right IT solution — on time and on budget.
+                    We listen to your needs, understand your context, and deliver the right IT solution - on time and on budget.
                 </p>
                 <div class="flex flex-wrap gap-4 reveal reveal-d3">
                     <a href="#services" class="inline-flex items-center px-8 py-4 bg-accent text-white text-[1.02rem] font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
@@ -195,16 +182,13 @@
             </div>
         </div>
 
-        <!-- Scroll indicator -->
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/25">
             <span class="text-[0.72rem] tracking-[0.25em] uppercase">Scroll</span>
             <div class="w-px h-8 bg-gradient-to-b from-cream/25 to-transparent"></div>
         </div>
     </section>
 
-    <!-- ===================== SERVICES ===================== -->
     <section id="services" class="relative py-24 sm:py-32 bg-surface overflow-hidden">
-        <!-- Top divider -->
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent"></div>
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-16 reveal">
@@ -215,7 +199,6 @@
             </div>
 
             <div class="grid sm:grid-cols-2 gap-5">
-                <!-- Consulting -->
                 <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
                     <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80"
@@ -229,7 +212,6 @@
                     </div>
                 </div>
 
-                <!-- Staffing -->
                 <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal reveal-d1" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
                     <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
@@ -243,7 +225,6 @@
                     </div>
                 </div>
 
-                <!-- Solutions -->
                 <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal reveal-d2" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
                     <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
@@ -253,11 +234,10 @@
                     </div>
                     <div class="relative z-10">
                         <h3 class="font-display text-[1.8rem] text-white mb-3">Solutions</h3>
-                        <p class="text-cream/55 body-text text-[1.2rem]">Our Solution Factory accelerates delivery by building on proven platforms — reducing your time and cost to market.</p>
+                        <p class="text-cream/55 body-text text-[1.2rem]">Our Solution Factory accelerates delivery by building on proven platforms - reducing your time and cost to market.</p>
                     </div>
                 </div>
 
-                <!-- Outsourcing -->
                 <div class="card-glow card-accent group relative bg-midnight/70 border border-white/[0.04] rounded-[4px] p-8 sm:p-10 hover:border-accent/20 transition-[border-color] duration-300 reveal reveal-d3" onmousemove="this.style.setProperty('--mx',event.offsetX+'px');this.style.setProperty('--my',event.offsetY+'px')">
                     <div class="relative -mx-8 -mt-8 sm:-mx-10 sm:-mt-10 mb-6 h-40 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80"
@@ -274,7 +254,6 @@
         </div>
     </section>
 
-    <!-- ===================== ABOUT ===================== -->
     <section id="about" class="relative py-24 sm:py-32 bg-cream overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
@@ -285,7 +264,7 @@
                         <span class="text-accent italic">Big-firm capability.</span>
                     </h2>
                     <div class="space-y-5 text-midnight/60 body-text text-[1.1rem]">
-                        <p>Founded in 2010, Austin Berkeley brings decades of enterprise IT leadership to every engagement. We don't just advise — we adopt your goals, your concerns, and your constraints.</p>
+                        <p>Founded in 2010, Austin Berkeley brings decades of enterprise IT leadership to every engagement. We don't just advise - we adopt your goals, your concerns, and your constraints.</p>
                         <p>Lean by design: senior teams, crisp decisions, and just-enough process. We move fast, build carefully, and leave you with clean, maintainable outcomes - not a dependency.</p>
                     </div>
                 </div>
@@ -302,10 +281,9 @@
                                 <blockquote class="font-display text-[clamp(1.7rem,3vw,2.3rem)] text-white/90 italic leading-snug">
                                     "Simplicity is the ultimate sophistication."
                                 </blockquote>
-                                <p class="mt-5 text-[0.82rem] text-white/40 tracking-[0.15em] uppercase">— Leonardo da Vinci</p>
+                                <p class="mt-5 text-[0.82rem] text-white/40 tracking-[0.15em] uppercase">- Leonardo da Vinci</p>
                             </div>
                         </div>
-                        <!-- Corner accents -->
                         <div class="absolute -top-3 -left-3 w-14 h-14 border-t-2 border-l-2 border-accent/25 rounded-tl-[2px]"></div>
                         <div class="absolute -bottom-3 -right-3 w-14 h-14 border-b-2 border-r-2 border-accent/25 rounded-br-[2px]"></div>
                     </div>
@@ -314,7 +292,6 @@
         </div>
     </section>
 
-    <!-- ===================== CTA BANNER ===================== -->
     <section class="relative py-24 sm:py-32 overflow-hidden">
         <div class="absolute inset-0" style="background: linear-gradient(135deg, #1f7a6f 0%, #2a9d8f 35%, #1a3a5c 100%);"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-midnight/30 to-transparent"></div>
@@ -335,7 +312,6 @@
         </div>
     </section>
 
-    <!-- ===================== COMMUNITY ===================== -->
     <section id="community" class="relative py-24 sm:py-32 bg-surface overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
@@ -350,7 +326,7 @@
 
                 <div class="reveal reveal-d1">
                     <p class="text-cream/55 body-text text-[1.2rem] mb-8">
-                        We invest 10% of net revenues in charitable endeavors — from global development organizations to local Chester County causes.
+                        We invest 10% of net revenues in charitable endeavors - from global development organizations to local Chester County causes.
                     </p>
                     <div class="flex flex-wrap gap-2.5">
                         <span class="px-4 py-2 bg-gold/[0.06] border border-gold/15 text-gold/60 text-[0.92rem] rounded-[3px]">Evidence Action</span>
@@ -366,12 +342,11 @@
         </div>
     </section>
 
-    <!-- ===================== CONTACT ===================== -->
     <section id="contact" class="relative py-24 sm:py-32 bg-midnight overflow-hidden">
         <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cream/[0.06] to-transparent"></div>
 
         <div class="max-w-6xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 lg:gap-20">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
                 <div class="reveal">
                     <p class="text-accent text-[0.9rem] font-medium tracking-[0.2em] uppercase mb-4">Get in Touch</p>
                     <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] text-white display-heading mb-8">
@@ -391,21 +366,71 @@
                 </div>
 
                 <div class="reveal reveal-d1">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="bg-surface/70 border border-white/[0.06] rounded-[4px] p-8 sm:p-10 space-y-6">
+                        <input type="hidden" name="access_key" value="d4331de8-6633-4987-b6e7-85880a35d21e">
+                        <input type="hidden" name="subject" value="New Austin Berkeley website contact">
+                        <input type="hidden" name="from_name" value="Austin Berkeley Website">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
 
-                    <form action="https://api.web3forms.com/submit" method="POST">
-                      <input type="hidden" name="access_key" value="d4331de8-6633-4987-b6e7-85880a35d21e">
-                      <input type="text" name="name" required>
-                      <input type="email" name="email" required>
-                      <textarea name="message" required></textarea>
-                      <button type="submit">Submit</button>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="block text-[0.85rem] font-medium tracking-[0.12em] uppercase text-cream/55 mb-2">
+                                    Name
+                                </label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    autocomplete="name"
+                                    required
+                                    class="w-full rounded-[3px] border border-white/10 bg-midnight/80 px-4 py-3 text-cream placeholder:text-cream/30 focus:border-accent focus:outline-none"
+                                    placeholder="Your name">
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-[0.85rem] font-medium tracking-[0.12em] uppercase text-cream/55 mb-2">
+                                    Email
+                                </label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    autocomplete="email"
+                                    required
+                                    class="w-full rounded-[3px] border border-white/10 bg-midnight/80 px-4 py-3 text-cream placeholder:text-cream/30 focus:border-accent focus:outline-none"
+                                    placeholder="you@example.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-[0.85rem] font-medium tracking-[0.12em] uppercase text-cream/55 mb-2">
+                                Message
+                            </label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="7"
+                                required
+                                class="w-full rounded-[3px] border border-white/10 bg-midnight/80 px-4 py-3 text-cream placeholder:text-cream/30 focus:border-accent focus:outline-none resize-y"
+                                placeholder="Tell us a little about what you need."></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                            <p class="text-[0.9rem] text-cream/30">
+                                We typically respond within 1-2 business days.
+                            </p>
+                            <button
+                                type="submit"
+                                class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white text-[0.95rem] font-medium rounded-[3px] hover:bg-accent-dark active:scale-[0.97] transition-[background,transform] duration-200">
+                                Send Message
+                            </button>
+                        </div>
                     </form>
-                    
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===================== FOOTER ===================== -->
     <footer class="bg-midnight border-t border-white/[0.04] py-8">
         <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p class="text-cream/25 text-[0.88rem]">&copy; 2026 Austin Berkeley Corporation. All Rights Reserved.</p>
@@ -413,9 +438,7 @@
         </div>
     </footer>
 
-    <!-- ===================== SCRIPTS ===================== -->
     <script>
-        // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -427,7 +450,6 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Nav background on scroll
         const nav = document.getElementById('nav');
         let ticking = false;
         window.addEventListener('scroll', () => {
@@ -440,7 +462,6 @@
             }
         });
 
-        // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
